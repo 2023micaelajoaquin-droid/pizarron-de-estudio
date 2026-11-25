@@ -5,6 +5,7 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
   const STORAGE_KEY = 'club-punto-y-aparte:muro-de-repaso:notas:v1';
   const THEMES = ['pendientes', 'repaso', 'calculos'];
+  const THEME_LABELS = { pendientes: 'Pendientes', repaso: 'Ideas', calculos: 'Cálculos' };
   const UNIT_GROUPS = {
     longitud: { m: 1, km: 1000, cm: 0.01 },
     masa: { g: 1, kg: 1000 },
@@ -193,7 +194,7 @@
     }
 
     function themeLabel(theme) {
-      return { pendientes: 'Pendiente', repaso: 'Repaso', calculos: 'Cálculos' }[theme] || 'Pendiente';
+      return THEME_LABELS[theme] || 'Pendientes';
     }
 
     function clearEditor() {
@@ -326,5 +327,5 @@
     else showNotice('Las notas se guardan en este navegador.', 'info');
   }
 
-  return { convertValue, readNotes, upsertNote, removeNote, filterNotes, createStorage, start };
+  return { convertValue, readNotes, upsertNote, removeNote, filterNotes, createStorage, THEME_LABELS, start };
 });
